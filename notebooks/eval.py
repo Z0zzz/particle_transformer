@@ -1084,7 +1084,7 @@ if __name__ == "__main__":
     processed_mask = np.ndarray([num_events, pf_mask.shape[1], num_particles])
     processed_points = np.ndarray([num_events, pf_points.shape[1], num_particles])
        
-    print("Processing cutting dataset")
+    print("Processing cutting dataset", flush=True)
     for iev in range(pf_features.shape[0]):
         processed_event = cut_pt_by_particle_type(pf_features[iev].T, pf_points[iev].T, pf_vectors[iev].T, pf_mask[iev].T)
             
@@ -1092,7 +1092,7 @@ if __name__ == "__main__":
         processed_vectors[iev] = processed_event["pf_vectors"].T
         processed_mask[iev] = processed_event["pf_mask"].T
         processed_points[iev] = processed_event["pf_points"].T
-    print("Done cutting dataset")
+    print("Done cutting dataset", flush=True)
     
     processed_events = {"pf_features":processed_features, "pf_points":processed_points, "pf_vectors":processed_vectors, "pf_mask":processed_mask}
     
