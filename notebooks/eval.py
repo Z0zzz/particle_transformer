@@ -1123,6 +1123,6 @@ if __name__ == "__main__":
 
             y_preds = torch.concat((y_preds, y_pred), axis=0)
 
-    print("cut dataset accuracy: ", sum(torch.argmax(y_pred, axis=1) == torch.argmax(y_truth, axis=1))/y_truth.shape[0])
+    print("cut dataset accuracy: ", sum(torch.argmax(y_pred, axis=1) == torch.argmax(y_truth, axis=1))/y_truth.shape[0], flush=True)
     
     
