@@ -1103,7 +1103,7 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     device='cpu'
     dataset = JetClassDataset(processed_events, data["label"], device=device)
-    loader = DataLoader(dataset, batch_size=64, shuffle=True)
+    loader = DataLoader(dataset, batch_size=256, shuffle=True)
     model[0].to(device)
 
     model[0].eval()
@@ -1112,13 +1112,13 @@ if __name__ == "__main__":
     y_preds = torch.empty(1,10)
     y_truth = torch.empty(1,10)
     num_data_processed = 0
-    print("Evaluation Starts")
+    print("Evaluation Starts", flush=True)
     for batch in loader:
         features, points, vectors, masks, label = batch
         y_truth = torch.concat((y_truth, label), axis=0)
         with torch.no_grad():
-            print(num_data_processed + 64)
-            num_data_processed += 64
+            print(num_data_processed + 256, flush=True)
+            num_data_processed += 256
             y_pred = model[0](points.to(torch.float32), features.to(torch.float32), vectors.to(torch.float32), masks.to(torch.float32)).detach().cpu()
 
             y_preds = torch.concat((y_preds, y_pred), axis=0)
