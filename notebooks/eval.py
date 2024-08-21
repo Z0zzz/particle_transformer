@@ -1067,6 +1067,8 @@ if __name__ == "__main__":
     state_dict = torch.load('../models/ParT_full.pt', map_location=torch.device('cpu'))
     model[0].load_state_dict(state_dict)
     
+    print("Model loaded")
+        
     label_list = ['label_QCD', 'label_Hbb', 'label_Hcc', 'label_Hgg', 'label_H4q', 'label_Hqql', 'label_Zqq', 'label_Wqq', 'label_Tbqq', 'label_Tbl']
     pf_features = data["pf_features"]
     pf_vectors = data["pf_vectors"]
