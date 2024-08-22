@@ -1095,6 +1095,11 @@ if __name__ == "__main__":
         processed_mask[iev] = processed_event["pf_mask"].T
         processed_points[iev] = processed_event["pf_points"].T
     print("Done cutting dataset", flush=True)
+
+    del pf_features
+    del pf_vectors
+    del pf_mask
+    del pf_points
     
     processed_events = {"pf_features":processed_features, "pf_points":processed_points, "pf_vectors":processed_vectors, "pf_mask":processed_mask}
     
